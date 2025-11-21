@@ -31,4 +31,38 @@ CREATE TABLE supplement_sales.supp_weekly_sales(
 -- Importing Data --
 --------------------
 
-/* Right click on supp_weekly_sales table in the supplement_sales schema and select Table Data Import Wizard */
+/* Right click on supp_weekly_sales table in the supplement_sales schema and select Table Data Import Wizard to import data*/
+
+
+-------------------
+-- Sampling Data --
+-------------------
+
+/* Checking sample of data format */
+SELECT *
+FROM supp_weekly_sales
+LIMIT 10
+
+/* Counting total rows */
+SELECT COUNT(*)
+FROM supp_weekly_sales
+
+/* Checking for duplicates */
+SELECT *, COUNT(*) AS duplicate_count
+FROM supp_weekly_sales
+GROUP BY week_date, product_name, category, units_sold, price, total_revenue, discount, units_returned, location, platform
+HAVING COUNT(*) > 1
+
+/* Checking for null values */
+SELECT *
+FROM supp_weekly_sales
+WHERE week_date IS NULL OR TRIM(week_date) = ''
+	OR product_name IS NULL OR TRIM(product_name) = ''
+    OR category IS NULL OR TRIM(category) = ''
+    OR units_sold IS NULL OR TRIM(units_sold) = ''
+    OR price IS NULL OR TRIM(price) = ''
+    OR total_revenue IS NULL OR TRIM(total_revenue) = ''
+    OR discount IS NULL OR TRIM(discount) = ''
+    OR units_returned IS NULL OR TRIM(units_returned) = ''
+    OR location IS NULL OR TRIM(location) = ''
+    OR platform IS NULL OR TRIM(platform) = ''
