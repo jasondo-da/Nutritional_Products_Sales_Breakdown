@@ -23,8 +23,8 @@ CREATE TABLE supplement_sales.supp_weekly_sales(
   total_revenue SMALLINT UNSIGNED,
   discount FLOAT(4, 2) UNSIGNED,
   units_returned TINYINT UNSIGNED,
-  location ENUM('Canada', 'UK', 'USA'),
-  platform ENUM('Amazon', 'iHerb', 'Walmart')
+  location ENUM('canada', 'uk', 'usa'),
+  platform ENUM('amazon', 'iherb', 'walmart')
   )
 
 --------------------
@@ -33,10 +33,12 @@ CREATE TABLE supplement_sales.supp_weekly_sales(
 
 /* Right click on supp_weekly_sales table in the supplement_sales schema and select Table Data Import Wizard to import data*/
 
-
 -------------------
 -- Sampling Data --
 -------------------
+
+/* Checking table data types*/
+DESCRIBE supp_weekly_sales
 
 /* Checking sample of data format */
 SELECT *
@@ -66,3 +68,33 @@ WHERE week_date IS NULL OR TRIM(week_date) = ''
     OR units_returned IS NULL OR TRIM(units_returned) = ''
     OR location IS NULL OR TRIM(location) = ''
     OR platform IS NULL OR TRIM(platform) = ''
+
+/* Data Cleaning */
+
+/* Creating a unique identifier primary key for each entry */
+ALTER TABLE supp_weekly_sales
+ADD COLUMN id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY
+
+/* Converting product_name column into snakecase format */
+UPDATE supp_weekly_sales
+SET product_name = LOWER(
+    REGEXP_REPLACE(
+        REGEXP_REPLACE(
+            REGEXP_REPLACE(TRIM(product_name), '[^A-Za-z0-9]+', '_'), /* Replacing all non-alphanumeric sequences with the underscore character */
+        '_+', '_'), /* Replacing multiple underscore characters with a single one */
+    '^_|_$', '') /* Removing all leading or trailing underscore characters */
+)
+WHERE id > 0
+
+/* Converting category column into snakecase format */
+UPDATE supp_weekly_sales
+SET category = LOWER(
+    REGEXP_REPLACE(
+        REGEXP_REPLACE(
+            REGEXP_REPLACE(TRIM(category), '[^A-Za-z0-9]+', '_'), /* Replacing all non-alphanumeric sequences with the underscore character */
+        '_+', '_'), /* Replacing multiple underscore characters with a single one */
+    '^_|_$', '') /* Removing all leading or trailing underscore characters */
+)
+WHERE id > 0
+
+/*  */
