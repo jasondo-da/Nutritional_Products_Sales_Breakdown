@@ -1,6 +1,6 @@
-******************************************
--- Nutritional Products_Sales Breakdown --
-******************************************
+***************************************************************************
+-- Nutritional Products Sales Data Storage, Cleaning, and Transformation --
+***************************************************************************
 
 
 ---------------------
@@ -9,29 +9,28 @@
 
 /* Creating schema for project */
 CREATE SCHEMA IF NOT EXISTS supplement_sales
-USE supplement_sales
-
-DROP TABLE IF EXISTS supp_weekly_sales
 
 /* Creating the dataset table with the optimized data types */
 CREATE TABLE supplement_sales.supp_weekly_sales(
 	week_date DATE,
-  product_name VARCHAR(30),
-  category  VARCHAR(20),
-  units_sold SMALLINT UNSIGNED,
-  price TINYINT UNSIGNED,
-  total_revenue SMALLINT UNSIGNED,
-  discount FLOAT(4, 2) UNSIGNED,
-  units_returned TINYINT UNSIGNED,
-  location ENUM('canada', 'uk', 'usa'),
-  platform ENUM('amazon', 'iherb', 'walmart')
+	product_name VARCHAR(30),
+	category  VARCHAR(20),
+	units_sold SMALLINT UNSIGNED,
+	price TINYINT UNSIGNED,
+	total_revenue SMALLINT UNSIGNED,
+	discount FLOAT(4, 2) UNSIGNED,
+	units_returned TINYINT UNSIGNED,
+	location ENUM('canada', 'uk', 'usa'),
+	platform ENUM('amazon', 'iherb', 'walmart')
   )
+
 
 --------------------
 -- Importing Data --
 --------------------
 
 /* Right click on supp_weekly_sales table in the supplement_sales schema and select Table Data Import Wizard to import data*/
+
 
 -------------------
 -- Sampling Data --
@@ -69,7 +68,10 @@ WHERE week_date IS NULL OR TRIM(week_date) = ''
     OR location IS NULL OR TRIM(location) = ''
     OR platform IS NULL OR TRIM(platform) = ''
 
-/* Data Cleaning */
+
+-------------------
+-- Data Cleaning --
+-------------------
 
 /* Creating a unique identifier primary key for each entry */
 ALTER TABLE supp_weekly_sales
@@ -80,7 +82,7 @@ UPDATE supp_weekly_sales
 SET product_name = LOWER(
     REGEXP_REPLACE(
         REGEXP_REPLACE(
-            REGEXP_REPLACE(TRIM(product_name), '[^A-Za-z0-9]+', '_'), /* Replacing all non-alphanumeric sequences with the underscore character */
+            REGEXP_REPLACE(TRIM(product_name), '[^A-Za-z0-9]+', '_'), /* Replacing all non-alphanumeric characters with the underscore characters */
         '_+', '_'), /* Replacing multiple underscore characters with a single one */
     '^_|_$', '') /* Removing all leading or trailing underscore characters */
 )
@@ -91,10 +93,24 @@ UPDATE supp_weekly_sales
 SET category = LOWER(
     REGEXP_REPLACE(
         REGEXP_REPLACE(
-            REGEXP_REPLACE(TRIM(category), '[^A-Za-z0-9]+', '_'), /* Replacing all non-alphanumeric sequences with the underscore character */
+            REGEXP_REPLACE(TRIM(category), '[^A-Za-z0-9]+', '_'), /* Replacing all non-alphanumeric characters with the underscore characters */
         '_+', '_'), /* Replacing multiple underscore characters with a single one */
     '^_|_$', '') /* Removing all leading or trailing underscore characters */
 )
 WHERE id > 0
 
-/*  */
+/* Saving cleaned table for analysis in Python */
+
+CREATE TABLE supp_weekly_sales_cleaned AS
+SELECT
+   week_date,
+   product_name,
+   category,
+   units_sold,
+   price,
+   total_revenue,
+   discount,
+   units_returned,
+   location,
+   platform
+FROM supp_weekly_sales
