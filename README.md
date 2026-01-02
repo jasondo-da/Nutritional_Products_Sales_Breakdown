@@ -1,4 +1,4 @@
-# Nutritional Products Sales Breakdown (In Process)
+# Nutritional Products Sales Breakdown
 
 ![aleksander-saks-7lQ1m08Z7eE-unsplash](https://github.com/user-attachments/assets/e7310dcc-b7f5-4885-ae89-15b8b70aecbb)
 
@@ -28,7 +28,7 @@ Link: [Nutritional Products Sales Breakdown Jupyter Notebook](https://github.com
 
 ### Tableau Dashboard
 
-Link: [Tableau Dashboard]()
+Link: [Tableau Dashboard](https://public.tableau.com/views/nutritional_sales_dashboard/dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 
 ### Project Dataset
@@ -62,3 +62,12 @@ Link: [Original Kaggle Dataset](https://www.kaggle.com/datasets/zahidmughal2343/
 
 ## Executive Summary
 
+This analysis evaluates online sales performance and demand patterns for nutritional supplements across Canada, the United Kingdom, and the United States from 2020 to 2024.
+
+**Key findings include:**
+- Seasonality strongly influences supplement sales, with demand peaking during seasonal transitions across all regions  
+- Canada is the most stable and highest-performing market, showing consistent growth throughout the period  
+- The United Kingdom maintains steady intra-year demand but exhibits significant year-to-year volatility, including a sharp decline in 2024  
+- The United States records the lowest total sales volume but demonstrates consistent long-term growth, indicating strong future potential  
+- Sales are concentrated in vitamins, minerals, protein, and performance supplements, with return patterns closely mirroring sales volume rather than indicating category-specific issues
+- iHerb is the dominant purchase platform, outperforming Amazon and Walmart, likely due to its specialized focus on nutritional and wellness products versus general-purpose retailers
