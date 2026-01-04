@@ -15,7 +15,7 @@
 
 ## Project Introduction
 
-This project analyzes global nutritional supplement sales data across multiple products, countries, and online platforms to uncover trends in revenue, customer demand, and product performance. The analysis follows a complete end to end data workflow using SQL for data cleaning, Python for data manipulation and exploratory analysis, and Tableau for interactive dashboard creation to support data driven decision making.
+This project analyzes global nutritional supplement sales across multiple products, countries, and online platforms to uncover trends in revenue, customer demand, and product performance. The analysis follows a full end-to-end data workflow, leveraging SQL for data cleaning, Python for data manipulation and exploratory analysis, and Tableau to create interactive dashboards for reporting and data-driven decision making
 
 ### Code in SQL
 
@@ -64,7 +64,7 @@ Link: [Original Kaggle Dataset](https://www.kaggle.com/datasets/zahidmughal2343/
 
 This analysis evaluates online sales performance and demand patterns for nutritional supplements across Canada, the United Kingdom, and the United States from 2020 to 2024.
 
-**Key findings include:**
+**Key Findings:**
 - Seasonality strongly influences supplement sales, with demand peaking during seasonal transitions across all regions  
 - Canada is the most stable and highest-performing market, showing consistent growth throughout the period  
 - The United Kingdom maintains steady intra-year demand but exhibits significant year-to-year volatility, including a sharp decline in 2024  
