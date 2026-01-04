@@ -15,7 +15,7 @@
 
 ## Project Introduction
 
-This project analyzes global nutritional supplement sales across multiple products, countries, and online platforms to uncover trends in revenue, customer demand, and product performance. The analysis follows a full end-to-end data workflow, leveraging SQL for data cleaning, Python for data manipulation and exploratory analysis, and Tableau to create interactive dashboards for reporting and data-driven decision making
+This project analyzes global nutritional supplement sales across multiple products, countries, and online platforms to uncover trends in revenue, customer demand, and product performance. The analysis follows a full end-to-end data workflow, leveraging SQL for data cleaning, Python for data manipulation and exploratory analysis, and Tableau to create interactive dashboards for reporting and data-driven decision making.
 
 ### Code in SQL
 
