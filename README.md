@@ -77,7 +77,11 @@ Sales were heavily concentrated in vitamins and minerals (approximately $4 milli
 
 ### SQL Queries
 
-Link: [Nutritional Products Sales Breakdown Data Storage, Cleaning, and Transformation in SQL](https://github.com/jasondo-da/Nutritional_Products_Sales_Breakdown/blob/main/queries.sql)
+Link: [Nutritional Products Sales Breakdown: Creating Schema & Tables in SQL](https://github.com/jasondo-da/Nutritional_Products_Sales_Breakdown/blob/main/sql/01_schema.sql)
+
+Link: [Nutritional Products Sales Breakdown: Importing Data in SQL](https://github.com/jasondo-da/Nutritional_Products_Sales_Breakdown/blob/main/sql/02_import.sql)
+
+Link: [Nutritional Products Sales Breakdown: Data Cleaning & Validation in SQL](https://github.com/jasondo-da/Nutritional_Products_Sales_Breakdown/blob/main/sql/03_cleaning.sql)
 
 ### Jupyter Notebook Code
 
